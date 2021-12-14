@@ -1,4 +1,4 @@
-# Pokemon TCG Decklist Database - Design Document
+# Pokemon TCG Deck Database - Design Document
 
 CCC-2021 T3A3 - Karl Alberto
 
@@ -6,7 +6,7 @@ CCC-2021 T3A3 - Karl Alberto
 
 ## Purpose
 
-This app is designed as an online tool for managing a user/player's _Pokemon Trading Card Game_ cards into _decklists_, using _SQLAlchemy_.
+This app is designed as an online tool for managing a user/player's _Pokemon Trading Card Game_ cards and decks into _decklists_, using _SQLAlchemy_.
 
 Individual decks will be stored in a table, which will hold a list of the individual cards the deck contains.
 
@@ -15,9 +15,11 @@ User information and account details will each be stored in separate tables, whe
 ### Pages
 
 List of pages in this app:
--
--
--
+- Home Page (with Login/Sign Up)
+- User Profile
+- User Deck List
+- User Deck Card List
+- Card View
 
 
 ### Entity Relationship Diagram
