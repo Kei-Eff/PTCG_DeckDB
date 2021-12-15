@@ -1,4 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Login</h1>
+
+    <div class="nes-container is-rounded">
+        <form>
+            <div class="nes-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="nes-input">
+            </div>
+            <div class="nes-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="nes-input">
+            </div>
+            <div class="nes-field">
+                <button type="button" class="nes-btn is-primary">Login</button>
+            </div>
+        </form>
+
+    </div>
 {% endblock %}

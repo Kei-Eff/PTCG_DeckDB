@@ -42,7 +42,7 @@ def create_app():
 
     @app.route("/login")
     def login():
-        return "Login/Signup"
+        return render_template("login.html")
 
 
     if __name__ == "__main__":
