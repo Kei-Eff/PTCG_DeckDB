@@ -1,26 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>All Decks</h1>
+    <h1>Decks</h1>
 
     <div class="nes-table-responsive">
         <table class="nes-table is-bordered">
             <thead>
             <tr>
                 <th>Deck Name</th>
-                <th>Created By</th>
                 <th>Date Created</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>Let's Brock and Roll!</td>
-                <td>Brockolli</td>
                 <td>YYYY/MM/DD</td>
+                <td>
+                    <button type="button" class="nes-btn is-success">Edit</button>
+                    <button type="button" class="nes-btn is-error">Delete</button>
+                </td>
             </tr>
             <tr>
                 <td>Flab&eacute;b&eacute; Back Ribs</td>
-                <td>Outback Bakehouse</td>
                 <td>YYYY/MM/DD</td>
+                <td>
+                    <button type="button" class="nes-btn is-success">Edit</button>
+                    <button type="button" class="nes-btn is-error">Delete</button>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -17,7 +17,7 @@ def create_app():
 
     @app.route("/userdecks")
     def userdecks():
-        return "List of decks added by a user."
+        return render_template("userdecks.html")
 
 
     @app.route("/decks/<id>")

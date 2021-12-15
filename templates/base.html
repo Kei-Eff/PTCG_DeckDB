@@ -1,19 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>
-            Pok&eacute;Decks
+            Pok&eacute;decks
         </title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
         <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
         <link href="/static/css/styles.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
     <body>
         <nav>            
             <a href="/">Pok&eacute;decks</a>
             <a href="/profile">Profile</a>
-            <a href="/decks">Decks</a>
+            <div class="dropdown">
+                <button class="dropbtn">Decks
+                </button>
+                <div class="dropdown-content">
+                  <a href="/userdecks">Your Decks</a>
+                  <a href="/decks">All Decks</a>
+                </div>
+              </div>
             <a href="/login">Login</a>
         </nav>
 
