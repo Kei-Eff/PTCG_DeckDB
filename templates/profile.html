@@ -1,4 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Profile</h1>
+
+    <div class="nes-container is-rounded with-title">
+        <p class="title">Your Details</p>
+        <form>
+        <div class="nes-field">
+            <label for="username">Username</label>
+            <span class="nes-text">Charmeleon168</span>
+        </div>
+        <div class="nes-field">
+            <label for="emailAddress">Email Address</label>
+            <span class="nes-text">liam_oceanmaster@icloud.com</span>
+        </form>
+        </div>       
+    </div>
+
+    <div class="nes-container is-rounded with-title">
+        <p class="title">Your Settings</p>
+        <div>
+            <label>
+                <input type="checkbox" class="nes-checkbox" unchecked />
+                <span>Dark Mode</span>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" class="nes-checkbox" unchecked />
+                <span>Anonymous Mode</span>
+            </label>
+        </div>
+    </div>
+
+
 {% endblock %}

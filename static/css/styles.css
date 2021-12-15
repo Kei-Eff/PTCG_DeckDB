@@ -43,3 +43,33 @@ footer {
 .nes-field {
     margin: 15px;
 }
+
+.nes-container.is-rounded {
+    margin: 30px;
+}
+
+section.message-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-list > .message.-left {
+    align-self: flex-start;
+}
+
+.message-list > .message.-right {
+    align-self: flex-end;
+}
+
+.message-list > .message {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.message-list > .message.-left i {
+    margin-right: 2rem;
+}
+
+.message-list > .message.-right i {
+    margin-left: 2rem;
+}

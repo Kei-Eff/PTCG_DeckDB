@@ -1,4 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Decks</h1>
+
+    <div class="nes-table-responsive">
+        <table class="nes-table is-bordered">
+            <thead>
+            <tr>
+                <th>Deck Name</th>
+                <th>Created By</th>
+                <th>Date Submitted</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Let's Brock and Roll!</td>
+                <td>NurseJoyBestGirl</td>
+                <td>YYYY/MM/DD</td>
+            </tr>
+            <tr>
+                <td>Flab&eacute;b&eacute; Back Ribs</td>
+                <td>Outback Bakehouse</td>
+                <td>YYYY/MM/DD</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a class="nes-btn" href="#">Add New Deck</a>
+    </div>
+
 {% endblock %}
