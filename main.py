@@ -16,18 +16,22 @@ def create_app():
 
 
     @app.route("/userdecks")
-    def userdecks():
+    def user_decks():
         return render_template("userdecks.html")
 
 
-    @app.route("/decks/<id>")
+    @app.route("/decks/<id>/")
     def deck(id):
-        return "Decklist for " + str(id)
+        return render_template("deck.html")
 
 
     @app.route("/decks")
     def decks():
         return render_template("decks.html")
+
+    @app.route("/decks/new/")
+    def create_deck():
+        return render_template("create_deck.html")
 
 
     @app.route("/userindex")

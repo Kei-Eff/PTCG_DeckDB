@@ -1,19 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>All Decks</h1>
+    <h1>Let's Brock and Roll!</h1>
 
+    <div class="nes-container is-rounded">
+        <div class="nes-field">
+            <label>Format</label>                
+            <span class="nes-text">Standard</span>
+        </div>
+        <div class="nes-field">
+            <label>Created By</label>                
+            <span class="nes-text">Brockolli</span>
+        </div>
+    </div>
+    
     <div class="nes-table-responsive">
         <table class="nes-table is-bordered">
             <thead>
             <tr>
-                <th>Deck Name</th>
-                <th>Created By</th>
-                <th>Date Created</th>
+                <th>Card Name</th>
+                <th>Type</th>
+                <th>Quantity</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td><a href="/decks/1">Let's Brock and Roll!</a></td>
+                <td>Let's Brock and Roll!</td>
                 <td>Brockolli</td>
                 <td>YYYY/MM/DD</td>
             </tr>
@@ -25,9 +36,4 @@
             </tbody>
         </table>
     </div>
-
-    <div>
-        <a class="nes-btn is-primary" href="/decks/new/">Add New Deck</a>
-    </div>
-
 {% endblock %}
