@@ -7,11 +7,11 @@ def create_app():
 
     @app.route("/")
     def home():
-        return render_template("base.html")
+        return render_template("homepage.html")
 
 
-    @app.route("/user")
-    def user():
+    @app.route("/profile")
+    def profile():
         return "User's profile page."
 
 

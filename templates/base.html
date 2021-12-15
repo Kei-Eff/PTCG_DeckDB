@@ -2,12 +2,27 @@
 <html>
     <head>
         <title>
-            PTCG Deck DB
+            Pok&eacute;Decks
         </title>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/static/css/styles.css">
     </head>
 
     <body>
-        <h1>Hello, world.</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/profile">Profile</a>
+            <a href="/decks">Decks</a>
+        </nav>
+
+        <div class="content">
+            <h1>Pok&eacute;Decks</h1>
+
+            {% block content %}
+
+            {% endblock %}            
+        </div>
 
 
     </body>
