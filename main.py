@@ -12,7 +12,7 @@ def create_app():
 
     @app.route("/profile")
     def profile():
-        return "User's profile page."
+        return render_template("profile.html")
 
 
     @app.route("/userdecks")
@@ -27,7 +27,7 @@ def create_app():
 
     @app.route("/decks")
     def decks():
-        return "List of decks added by all users on the site."
+        return render_template("decks.html")
 
 
     @app.route("/userindex")
@@ -38,6 +38,12 @@ def create_app():
     @app.route("/cards")
     def cards():
         return "Card search page."
+
+
+    @app.route("/login")
+    def login():
+        return "Login/Signup"
+
 
     if __name__ == "__main__":
         app.run(host='0.0.0.0', debug=True)
