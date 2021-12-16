@@ -15,9 +15,9 @@ def create_app():
         return render_template("profile.html")
 
 
-    @app.route("/userdecks")
+    @app.route("/user_decks")
     def user_decks():
-        return render_template("userdecks.html")
+        return render_template("user_decks.html")
 
 
     @app.route("/decks/<id>/")
@@ -34,7 +34,7 @@ def create_app():
         return render_template("create_deck.html")
 
 
-    @app.route("/userindex")
+    @app.route("/user_index")
     def users():
         return "List of users registered on this website."
 
@@ -42,6 +42,10 @@ def create_app():
     @app.route("/cards")
     def cards():
         return "Card search page."
+
+    @app.route("/decks/<id>/add_card/")
+    def add_card(id):
+        return render_template("add_card.html")
 
 
     @app.route("/login")

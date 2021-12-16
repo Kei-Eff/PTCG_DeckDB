@@ -1,2 +1,3 @@
-# PTCG_DeckDB
-Web application for storing user decklists for the Pokémon Trading Card Game
+# Pok&eacute;decks
+
+Pok&eacute;decks is a web application which users can use to manage their Pokémon Trading Card Game decks.
