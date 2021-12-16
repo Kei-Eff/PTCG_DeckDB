@@ -9,12 +9,19 @@
             <input type="text" id="name" name="name" class="nes-input">
         </div>
         <div class="nes-field">
-            <label for="name">Set</label>
-            <input type="text" id="name" name="name" class="nes-input">
+            <label for="set">Set</label>
+            <input type="text" id="set" name="set" class="nes-input">
         </div>
         <div class="nes-field">
-            <label for="name">Type</label>
-            <input type="text" id="name" name="name" class="nes-input">
+            <label for="type">Type</label>
+            <div class="nes-select">
+                <select required id="type">
+                    <option value="" disabled selected hidden>Card type...</option>
+                    <option value="1">Pok&eacute;mon</option>
+                    <option value="2">Trainer</option>
+                    <option value="3">Energy</option>
+                </select>
+            </div>
         </div>
         <div class="nes-field">
             <label for="name">Quantity</label>

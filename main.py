@@ -1,5 +1,8 @@
 from flask import Flask, render_template
+from flask_marshmallow import Marshmallow
 
+
+ma = Marshmallow()
 
 def create_app():
 
