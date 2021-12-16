@@ -16,7 +16,7 @@ class User(UserMixin, db.Model):
     )
 
     email = db.Column(
-        db.String(80)
+        db.String(80),
         unique=True,
         nullable=False
     )
