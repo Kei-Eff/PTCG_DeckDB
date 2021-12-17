@@ -5,10 +5,6 @@ from models.deck import Deck
 
 decks = Blueprint('deck', __name__)
 
-@decks.route('/')
-def homepage():
-    return render_template("homepage.html")
-
 @decks.route('/decks', methods=["GET"])
 def get_decks():
     decks = Deck.query.all()
