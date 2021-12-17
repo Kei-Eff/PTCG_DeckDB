@@ -1,13 +1,10 @@
 from main import db
-from sqlalchemy.sql import func
 
-class Deck(db.Model):
-    __tablename__ = "Deck"
+class CardType(db.Model):
+    __tablename__ = "CardType"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
-    date_created = db.Column(db.DateTime(), server_default=func.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
-    card = db.relationship('Card', backref='deck', lazy=True)
+    card = db.relationship('Card', backref='card_type', lazy=True)
 
     def __init__(self, name):
         self.name = name
