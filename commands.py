@@ -15,3 +15,15 @@ def drop_db():
     print("Tables deleted")
 
 
+@db_commands.cli.command("seed")
+def seed_db():
+    from models.deck import Deck
+    from faker import Faker
+    faker = Faker()
+
+    for i in range(10):
+        deck = Deck(faker.catch_phrase())
+        db.session.add(deck)
+
+    db.session.commit()
+    print("Tables seeded")
