@@ -16,3 +16,4 @@ class Deck(db.Model):
             "id": self.id,
             "name": self.name
         }
+        
