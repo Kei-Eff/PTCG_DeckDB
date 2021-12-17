@@ -16,7 +16,7 @@ def get_decks():
 
 @decks.route('/decks', methods=["POST"])
 def create_deck():
-    new_deck = Deck(request.json["deck_name"])
+    new_deck = Deck(request.json["name"])
     db.session.add(new_deck)
     db.session.commit()
     return jsonify(new_deck.serialize)
@@ -28,8 +28,8 @@ def get_deck(id):
 
 @decks.route('/decks/<int:id>/', methods=["PUT", "PATCH"])
 def update_deck(id):
-    deck = Deck.filter_by(deck_id=id)
-    deck.update(dict(deck_name=request.json["deck_name"]))
+    deck = Deck.filter_by(id=id)
+    deck.update(dict(name=request.json["name"]))
     db.session.commit()
     return jsonify(deck.first().serialize)
 

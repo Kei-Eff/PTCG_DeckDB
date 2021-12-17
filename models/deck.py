@@ -6,8 +6,8 @@ class Deck(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     date_created = db.Column(db.DateTime(), server_default=func.now())
-    # user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
-    # card = db.relationship('Card', backref='deck', lazy=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
+    card = db.relationship('Card', backref='deck', lazy=True)
 
     def __init__(self, name):
         self.name = name
