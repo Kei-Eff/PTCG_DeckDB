@@ -48,6 +48,7 @@ Dolor
 
 ### Professional
 
+This app is being developed as part of an assignment and portfolio item for the _Coding, Cloud and Cyber_ bootcamp.
 
 ### Ethical
 
