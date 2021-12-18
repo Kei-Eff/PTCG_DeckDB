@@ -1,8 +1,9 @@
 from main import db
 from sqlalchemy.sql import func
 from werkzeug.security import check_password_hash
+from flask_login import UserMixin
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = "User"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -12,7 +13,7 @@ class User(db.Model):
 
     user_settings = db.relationship("UserSettings", backref="user", lazy=False, uselist=False)
 
-    user_decks = db.relationship("Deck", backref="creator", lazy="joined")
+    decks = db.relationship("Deck", backref="user", lazy="joined")
 
     def __init__(self, username, password, email):
         self.username = username
@@ -29,4 +30,3 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-        

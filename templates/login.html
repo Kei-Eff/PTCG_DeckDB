@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Login</h1>
-<form>
+<form action="/login" method="POST">
     <div class="nes-container is-rounded">
 
         <div class="nes-field">
@@ -13,8 +13,13 @@
             <input type="password" id="password" name="password" class="nes-input">
         </div>
         <div class="nes-field">
-            <button type="button" class="nes-btn is-primary">Login</button>
+            <button type="submit" class="nes-btn is-primary">Login</button>
         </div>
     </div>
 </form>
+
+<div>
+    <p>Not registered? Signup!</p>
+    <a class="nes-btn" href="/signup">Signup</a>
+</div>
 {% endblock %}
