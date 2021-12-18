@@ -14,11 +14,18 @@ User information and account details will each be stored in separate tables, whe
 
 ### Pages
 
-List of pages in this app:
-- Home Page (with Login/Sign Up)
+List of core pages in this app:
+- Home Page (with Login/Signup)
 - User Profile
-- User Deck List
-- User Deck Card List
+- User Settings
+- User Decks
+- User Deck Cardlist
+- All Decks (from all site users)
+- Create New Deck
+- Add New Card
+
+List of pages for future implementation (outside of assignment requirements)
+- Card Search (linked to PTCG API)
 - Card View
 
 
@@ -36,6 +43,7 @@ Lorem ipsum
 
 Dolor
 
+
 ## Professional, Ethical and Legal Obligations
 
 ### Professional
@@ -43,5 +51,11 @@ Dolor
 
 ### Ethical
 
+The app currently does not apply a profanity filter; and as the series the game is based off of is very popular among younger children, there is risk of exposure to language that may be deemed inappropriate for their age.
+
 
 ### Legal
+
+_Nintendo_ own the rights to the Pok&eacute;mon franchise, and are infamously litigious when it comes to use of their intellectual property. While many sites exist to support, rate, commentate on, and review the card game; concerns on whether Nintendo will apply legal pressure is never zero.
+
+The current CSS framework used also has elements that are similarly designed to game elements from older Nintendo/Pok&eacute;mon games (namely from the older consoles), with some images based on the actual characters.
