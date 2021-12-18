@@ -1,6 +1,6 @@
 from main import db
-from werkzeug.security import check_password_hash
 from sqlalchemy.sql import func
+from werkzeug.security import check_password_hash
 
 class User(db.Model):
     __tablename__ = "User"
@@ -9,7 +9,10 @@ class User(db.Model):
     date_created = db.Column(db.DateTime(), server_default=func.now())
     email = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
-    user_settings = db.relationship('UserSettings', backref='user', lazy=False, uselist=False)
+
+    user_settings = db.relationship("UserSettings", backref="user", lazy=False, uselist=False)
+
+    user_decks = db.relationship("Deck", backref="creator", lazy="joined")
 
     def __init__(self, username, password, email):
         self.username = username
@@ -23,3 +26,7 @@ class User(db.Model):
             "username": self.username,
             "email": self.email
         }
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+        

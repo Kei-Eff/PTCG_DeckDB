@@ -12,4 +12,4 @@ class DeckSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
 
 deck_schema = DeckSchema()
-deck_multi_schema = DeckSchema(many=True)
+multi_deck_schema = DeckSchema(many=True)

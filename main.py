@@ -1,10 +1,11 @@
 import os
-import re
 from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 
 
 db = SQLAlchemy()
+ma = Marshmallow()
 
 def create_app():
 
@@ -33,14 +34,6 @@ def create_app():
     from commands import db_commands
     app.register_blueprint(db_commands)
 
-    # @app.route("/profile")
-    # def profile():
-    #     return render_template("profile.html")
-
-    # @app.route("/user_decks")
-    # def user_decks():
-    #     return render_template("user_decks.html")
-
     # @app.route("/user_index")
     # def users():
     #     return "List of users registered on this website."
@@ -48,15 +41,6 @@ def create_app():
     # @app.route("/cards")
     # def cards():
     #     return "Card search page."
-
-    # @app.route("/decks/<id>/add_card/")
-    # def add_card(id):
-    #     return render_template("add_card.html")
-
-    # @app.route("/login")
-    # def login():
-    #     return render_template("login.html")
-    
 
     # @app.errorhandler(ValidationError)
     # def handle_bad_request(error):

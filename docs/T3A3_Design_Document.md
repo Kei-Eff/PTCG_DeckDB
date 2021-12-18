@@ -14,7 +14,7 @@ User information and account details will each be stored in separate tables, whe
 
 ### Pages
 
-List of core pages in this app:
+List of pages in this app:
 - Home Page (with Login/Signup)
 - User Profile
 - User Settings
@@ -22,7 +22,7 @@ List of core pages in this app:
 - User Deck Cardlist
 - All Decks (from all site users)
 - Create New Deck
-- Add New Card
+- Add Card
 
 List of pages for future implementation (outside of assignment requirements)
 - Card Search (linked to PTCG API)
