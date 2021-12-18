@@ -14,3 +14,4 @@ class DeckSchema(ma.SQLAlchemyAutoSchema):
 
 deck_schema = DeckSchema()
 decks_schema = DeckSchema(many=True)
+deck_update_schema = DeckSchema(partial=True)

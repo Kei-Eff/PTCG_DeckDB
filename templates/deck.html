@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Let's Brock and Roll!</h1>
+    <h1>{{ page_data.deck["name"] }}</h1>
 
     <div class="nes-container is-rounded">
         <div class="nes-field">
-            <label>Format</label>                
-            <span class="nes-text">Standard</span>
+            <label>Created By</label>                
+            <span class="nes-text">{{ page_data.deck["user"]["username"] }}</span>
         </div>
         <div class="nes-field">
-            <label>Created By</label>                
-            <span class="nes-text">Brockolli</span>
+            <label>Date Created</label>                
+            <span class="nes-text">{{ page_data.deck["date_created"] }}</span>
         </div>
     </div>
     
@@ -24,18 +24,13 @@
                 </tr>
             </thead>
             <tbody>
+                <!--
                 <tr>
                     <td>Umbreon V</td>
                     <th>Evolving Skies</th>
                     <td>Pok&eacute;mon</td>
                     <td>3</td>
-                </tr>
-                <tr>
-                    <td>Copycat</td>
-                    <th>Evolving Skies</th>
-                    <td>Trainer</td>
-                    <td>2</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>

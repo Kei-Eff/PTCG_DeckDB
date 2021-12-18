@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Update Deck</h1>
+
+<div class="nes-container is-rounded">
+    <form action="/deck/{{ page_data.deck['id'] }}/" method="POST">
+        <div class="nes-field">
+            <label for="name">Deck Name</label>
+            <input type="text" id="name" name="name" class="nes-input" value="{{ page_data.deck['name'] }}">
+        </div>
+        <div class="nes-field">
+            <button type="submit" class="nes-btn is-primary">Update</button>
+        </div>
+    </form>
+</div>
+
+<!-- <div class="nes-container with-title is-rounded">
+    
+    <p class="title">Cards</p>
+
+    <div class="nes-table-responsive">
+        <table class="nes-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Set</th>
+                    <th>Type</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Umbreon V</td>
+                    <th>Evolving Skies</th>
+                    <td>Pok&eacute;mon</td>
+                    <td>3</td>
+                    <td>
+                        <button type="button" class="nes-btn is-success">Edit</button>
+                        <button type="button" class="nes-btn is-error">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Copycat</td>
+                    <th>Evolving Skies</th>
+                    <td>Trainer</td>
+                    <td>2</td>
+                    <td>
+                        <button type="button" class="nes-btn is-success">Edit</button>
+                        <button type="button" class="nes-btn is-error">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+{% endblock %}

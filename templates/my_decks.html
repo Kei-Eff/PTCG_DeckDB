@@ -8,6 +8,7 @@
             <tr>
                 <th>Deck Name</th>
                 <th>Date Created</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -15,6 +16,11 @@
                 <tr>
                     <td><a href="/decks/{{ deck.id }}">{{ deck.name }}</a></td>
                     <td>{{ deck.date_created }}</td>
+                    <td>
+                        <a href="/deck/{{ deck.id }}" class="nes-btn is-success">Edit Deck</a>
+                        <a href="/deck/{{ deck.id }}/cards/" class="nes-btn is-warning">Edit Cards</a>
+                        <form action="/deck/{{ deck.id }}/delete/" method="POST"><button class="nes-btn is-error">Delete</button></form>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

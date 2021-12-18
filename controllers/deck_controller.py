@@ -1,19 +1,11 @@
-from flask import Blueprint, jsonify, request, url_for, render_template, redirect
+from flask import Blueprint, request, url_for, render_template, redirect, abort
 from main import db
 from models.deck import Deck
-from schemas.deck_schema import deck_schema, decks_schema
+from schemas.deck_schema import deck_schema, decks_schema, deck_update_schema
 from flask_login import login_required, current_user
+from marshmallow import ValidationError
 
 decks = Blueprint("deck", __name__)
-
-@decks.route("/my-decks/", methods=["GET"])
-@login_required
-def get_my_decks():
-    data = {
-        "decks": decks_schema.dump(Deck.query.filter_by(user_id=current_user.id))
-    }
-    return render_template("my_decks.html", page_data=data)
-
 
 @decks.route("/decks/", methods=["GET"])
 def get_decks():
@@ -21,6 +13,23 @@ def get_decks():
         "decks": decks_schema.dump(Deck.query.all())
     }
     return render_template("decks.html", page_data=data)
+    
+@decks.route("/decks/<int:id>/", methods=["GET"])
+def get_deck(id):
+    deck = Deck.query.get_or_404(id)
+    data = {
+        "deck": deck_schema.dump(deck)
+    }
+
+    return render_template("deck.html", page_data=data)
+    
+@decks.route("/my-decks/", methods=["GET"])
+@login_required
+def get_my_decks():
+    data = {
+        "decks": decks_schema.dump(Deck.query.filter_by(user_id=current_user.id))
+    }
+    return render_template("my_decks.html", page_data=data)
 
 @decks.route("/deck/", methods=["GET", "POST"])
 @login_required
@@ -34,22 +43,38 @@ def create_deck():
     db.session.commit()
     return redirect(url_for("deck.get_my_decks"))
 
-@decks.route("/decks/<int:id>/", methods=["GET"])
-def get_deck(id):
-    deck = Deck.query.get_or_404(id)
-    return jsonify(deck.serialize)
-
-@decks.route("/decks/<int:id>/", methods=["PUT", "PATCH"])
+@decks.route("/deck/<int:id>/", methods=["GET", "POST"])
+@login_required
 def update_deck(id):
-    deck = Deck.filter_by(id=id)
-    deck.update(dict(name=request.json["name"]))
-    db.session.commit()
-    return jsonify(deck.first().serialize)
+    deck = Deck.query.get_or_404(id)
+    if current_user.id != deck.user_id:
+        abort(403, "You do not have permission to alter this deck.")
 
-@decks.route("/decks/<int:id>/", methods=["DELETE"])
+    data = {
+        "deck": deck_schema.dump(deck)
+    }
+
+    if request.method == "GET":
+        return render_template("edit_deck.html", page_data=data)
+
+    deck = Deck.query.filter_by(id=id)
+    updated_fields = deck_schema.dump(request.form)
+    errors = deck_update_schema.validate(updated_fields)
+
+    if errors:
+        raise ValidationError(message=errors)
+
+    deck.update(updated_fields)
+    db.session.commit()
+    return redirect(url_for("deck.get_my_decks"))
+
+@decks.route("/deck/<int:id>/delete/", methods=["POST"])
+@login_required
 def delete_deck(id):
     deck = Deck.query.get_or_404(id)
+    if current_user.id != deck.user_id:
+        abort(403, "You do not have permission to delete this deck.")
+        
     db.session.delete(deck)
     db.session.commit()
-    return jsonify(deck.serialize)
-
+    return redirect(url_for("deck.get_my_decks"))
