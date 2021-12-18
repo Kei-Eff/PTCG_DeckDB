@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Cards in "{{ page_data.deck["name"] }}" Deck</h1>
+
+    {% if page_data.cards | length > 0 %}
+    <div class="nes-table-responsive">
+        <table class="nes-table is-bordered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Set</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for card in page_data.cards %}
+                <tr>
+                    <td>{{ card.name }}</td>
+                    <td>{{ card.set }}</td>
+                    <td>{{ card.type }}</td>
+                    <td>{{ card.quantity }}</td>
+                    <td>
+                        <a href="/deck/{{ page_data.deck['id'] }}/card/{{ card.id }}" class="nes-btn is-success">Edit</a>
+                        <form action="/deck/{{ page_data.deck['id'] }}/card/{{ card.id }}/delete/" method="POST"><button class="nes-btn is-error">Delete</button></form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p>Deck is empty! Add cards by clicking the "Add Card" button.</p>
+    {% endif %}
+
+    <div>
+        <a class="nes-btn is-primary" href="/deck/{{ page_data.deck['id'] }}/card/">Add Card</a>
+        <a class="nes-btn" href="/my-decks/">Back to My Decks</a>
+    </div>
+{% endblock %}
