@@ -1,7 +1,7 @@
 from main import db
 from flask import Blueprint
 
-db_commands = Blueprint("db", __name__)
+db_commands = Blueprint("db-custom", __name__)
 
 @db_commands.cli.command("create")
 def create_db():
@@ -12,6 +12,7 @@ def create_db():
 @db_commands.cli.command("drop")
 def drop_db():
     db.drop_all()
+    db.engine.execute("DROP TABLE IF EXISTS alembic_version;")
     print("Tables deleted")
 
 
@@ -26,4 +27,9 @@ def seed_db():
         db.session.add(card_type)
 
     db.session.commit()
-    print("Tables seeded")
+    print("CardTypes seeded")
+
+@db_commands.cli.command("reset")
+def reset_db():
+    drop_db()
+    seed_db()
