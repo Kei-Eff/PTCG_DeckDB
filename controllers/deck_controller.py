@@ -27,7 +27,7 @@ def get_deck(id):
 @login_required
 def get_my_decks():
     data = {
-        "decks": decks_schema.dump(Deck.query.filter_by(user_id=current_user.id))
+        "decks": decks_schema.dump(Deck.query.filter_by(user_id=current_user.id).order_by(Deck.date_created.desc()))
     }
     return render_template("my_decks.html", page_data=data)
 

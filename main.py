@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_login import LoginManager
@@ -31,11 +31,11 @@ def create_app():
 
     app = Flask(__name__)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql+psycopg2://{db_user}:{db_pass}@{db_domain}/{db_name}"
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SECRET_KEY'] = secret_key
+    # app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql+psycopg2://{db_user}:{db_pass}@{db_domain}/{db_name}"
+    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # app.config['SECRET_KEY'] = secret_key
 
-    # app.config.from_object("config.app_config")
+    app.config.from_object("config.app_config")
 
     db.init_app(app)
     lm.init_app(app)
