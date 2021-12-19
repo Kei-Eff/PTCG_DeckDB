@@ -17,14 +17,13 @@ def drop_db():
 
 @db_commands.cli.command("seed")
 def seed_db():
-    from models.deck import Deck
-    from faker import Faker
-    faker = Faker()
+    from models.card_type import CardType
 
-    for i in range(10):
-        deck = Deck(faker.catch_phrase())
-        db.session.add(deck)
+    card_types = ["Pokémon", "Trainer", "Energy"]
+
+    for type in card_types:
+        card_type = CardType(type)
+        db.session.add(card_type)
 
     db.session.commit()
     print("Tables seeded")
-    

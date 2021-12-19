@@ -19,11 +19,11 @@
                 <tr>
                     <td>{{ card.name }}</td>
                     <td>{{ card.set }}</td>
-                    <td>{{ card.type }}</td>
+                    <td>{{ card.card_type["name"] }}</td>
                     <td>{{ card.quantity }}</td>
                     <td>
-                        <a href="/deck/{{ page_data.deck['id'] }}/card/{{ card.id }}" class="nes-btn is-success">Edit</a>
-                        <form action="/deck/{{ page_data.deck['id'] }}/card/{{ card.id }}/delete/" method="POST"><button class="nes-btn is-error">Delete</button></form>
+                        <a href="/card/{{ card.id }}" class="nes-btn is-success">Edit</a>
+                        <form action="/card/{{ card.id }}/delete/" method="POST"><button class="nes-btn is-error">Delete</button></form>
                     </td>
                 </tr>
             {% endfor %}

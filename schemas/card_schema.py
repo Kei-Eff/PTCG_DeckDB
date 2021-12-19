@@ -2,6 +2,7 @@ from main import ma
 from models.card import Card
 from marshmallow_sqlalchemy import auto_field
 from marshmallow import validate
+from schemas.card_type_schema import CardTypeSchema
 
 class CardSchema(ma.SQLAlchemyAutoSchema):
     id = auto_field(dump_only=True)

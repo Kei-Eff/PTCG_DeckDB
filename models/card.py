@@ -12,8 +12,10 @@ class Card(db.Model):
     cost = db.Column(db.Numeric(10, 2), default=0.00)
     deck_id = db.Column(db.Integer, db.ForeignKey("Deck.id"), nullable=False)
 
-    def __init__(self, name):
+    def __init__(self, name, set, quantity):
         self.name = name
+        self.set = set
+        self.quantity = quantity
 
     @property
     def serialize(self):

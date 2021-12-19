@@ -6,7 +6,7 @@ from marshmallow.validate import Length
 class CardTypeSchema(ma.SQLAlchemyAutoSchema):
     id = auto_field(dump_only=True)
     name = auto_field(required=True, validate=Length(min=1))
-    # card = ma.Nested("CardSchema")
+    card = ma.Nested("CardSchema")
 
     class Meta:
         model = CardType
