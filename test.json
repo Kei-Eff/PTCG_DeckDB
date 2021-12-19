@@ -1,0 +1,31 @@
+[
+    {
+        "email": "test@five.com",
+        "decks": [
+            {
+                "id": 3,
+                "name": "abort abort"
+            },
+            {
+                "id": 1,
+                "name": "test 5 deck"
+            },
+            {
+                "id": 2,
+                "name": "real nice"
+            },
+            {
+                "id": 4,
+                "name": "z frontier"
+            }
+        ],
+        "user_settings": {
+            "id": 1,
+            "is_dark_mode": false,
+            "is_anon_mode": false
+        },
+        "username": "test5",
+        "date_created": "2021-12-19T17:19:40.796442",
+        "id": 1
+    }
+]

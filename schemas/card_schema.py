@@ -9,7 +9,6 @@ class CardSchema(ma.SQLAlchemyAutoSchema):
     name = auto_field(required=True, validate=validate.Length(min=1))
     set = auto_field(required=True, validate=validate.Length(min=1))
     quantity= auto_field(required=True, validate=validate.Range(min=1))
-    cost = auto_field(validate=validate.Range(min=0.00))
     deck = ma.Nested("DeckSchema", exclude=("cards",))
     card_type = ma.Nested("CardTypeSchema")
 

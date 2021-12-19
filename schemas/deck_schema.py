@@ -7,7 +7,7 @@ class DeckSchema(ma.SQLAlchemyAutoSchema):
     id = auto_field(dump_only=True)
     name = auto_field(required=True, validate=validate.Length(min=1))
     user = ma.Nested("UserSchema")
-    cards = ma.Nested("CardSchema")
+    cards = ma.List(ma.Nested("CardSchema"))
 
     class Meta:
         model = Deck

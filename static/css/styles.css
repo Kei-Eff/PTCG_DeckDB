@@ -6,6 +6,12 @@ body {
     margin: 0;
 }
 
+body.is-dark
+{
+    background-color: #000000;
+    color: #ffffff;
+}
+
 /* Style the top navigation bar */
 nav {
     overflow: hidden;

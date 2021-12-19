@@ -10,7 +10,7 @@ decks = Blueprint("deck", __name__)
 @decks.route("/decks/", methods=["GET"])
 def get_decks():
     data = {
-        "decks": decks_schema.dump(Deck.query.all())
+        "decks": decks_schema.dump(Deck.query.order_by(Deck.date_created.desc()).all())
     }
     return render_template("decks.html", page_data=data)
     

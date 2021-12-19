@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
-    <body>
+    <body {% if current_user.is_authenticated and current_user.user_settings.is_dark_mode %}class="is-dark"{% endif %}>
         <nav>            
             <a href="/">Pok&eacute;decks</a>
             <a href="/profile">Profile</a>

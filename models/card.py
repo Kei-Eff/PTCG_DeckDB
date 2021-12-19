@@ -9,7 +9,6 @@ class Card(db.Model):
     set = db.Column(db.String(80), nullable=False)
     card_type_id = db.Column(db.Integer, db.ForeignKey("CardType.id"), nullable=False)
     quantity = db.Column(db.Integer, default=1)
-    cost = db.Column(db.Numeric(10, 2), default=0.00)
     deck_id = db.Column(db.Integer, db.ForeignKey("Deck.id"), nullable=False)
 
     def __init__(self, name, set, quantity):

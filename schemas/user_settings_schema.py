@@ -6,7 +6,6 @@ class UserSettingsSchema(ma.SQLAlchemyAutoSchema):
     id = auto_field(dump_only=True)
     is_dark_mode = auto_field(default=False)
     is_anon_mode = auto_field(default=False)
-    user = ma.Nested("UserSchema", exclude=("user_settings",))
 
     class Meta:
         model = UserSettings

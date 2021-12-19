@@ -18,9 +18,9 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
     )
     email = auto_field(required=True, validate=validate.Email())
 
-    decks = ma.Nested(
+    decks = ma.List(ma.Nested(
         "DeckSchema",
-        only=("id", "name")
+        only=("id", "name"))
     )
 
     user_settings = ma.Nested("UserSettingsSchema")
