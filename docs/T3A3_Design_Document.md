@@ -45,13 +45,14 @@ _(*"Decklist" is the conventional TCG term for the list of cards in a deck. For 
 
 ### Entity Relationship Diagram
 
-![ERD for the PTCG DecklistDB website](T3A3_ERD.png)
+![ERD for the Pok&eacute;decks website](pokedecks_erd.png)
+
+Fields for 'Date Created' are also included in the user and card models for further use/manipulation. The card model also originally included a price field, as this is often a good way to calculate how much a deck would cost a player when planning deck builds. For the purposes of this assignment, I settled with being able to perform aggregation on the total number of cards within a deck, using the SUM query on the Quantity field.
 
 
 ## Data Validation and Integrity Errors
 
-Lorem ipsum
-
+Along with the Deck Name field when creating/updating a deck, most of the Card fields require string inputs (with the majority of other fields taking integers). All models apply data constraints, with strings being limited by length also.
 
 ## Security Concerns
 
@@ -59,24 +60,36 @@ Current concerns include:
 
 * No password confirmation step
 * No password or email address update capability
-* 
+
+Users can only create decks and cards while logged in, facilitated by `flask-login` `login_required` decorator. `SQLAlchemy` protects from injection attacks via limited use of raw SQL within the app.
 
 
 ## Professional, Ethical and Legal Obligations
 
 ### Professional
 
+Delivery of core elements of this website and its database is a guarantee (given this is an assessed requirement).
 
+CI/CD plans for this project include reinstating and using the other fields mention in the ERD section above. Being able to provide cost estimates for players is sometimes a good way to steer users in the right direction when learning the game.
 
-
+Dark Mode is currently under construction on the site and currently only darkens the background on most pages. Tables and text are unaffected, and the simple contrasting range of colours used makes it easier to "lose" text when switching between modes. This is a simple case of going through each template to add an `if-block` to enable this functionality across the site.
 
 ### Ethical
 
 The app currently does not apply a profanity filter; and as the series the game is based off of is very popular among younger children, there is risk of exposure to language that may be deemed inappropriate for their age.
+
+Also related to the inclusion of cost of cards/decks, as this is currently only enabled by user input, this does not automatically update the card entity costs with up to date market costs for single cards. This also opens it up for users to manipulate other details, relating to how the rest of the site works.
 
 
 ### Legal
 
 _Nintendo_ own the rights to the Pok&eacute;mon franchise, and are infamously litigious when it comes to use of their intellectual property. While many sites exist to support, rate, commentate on, and review the card game; concerns on whether Nintendo will apply legal pressure is never zero.
 
-The current CSS framework used also has elements that are similarly designed to game elements from older Nintendo/Pok&eacute;mon games (namely from the older consoles), with some images based on the actual characters.
+This site uses [Nostalgic CSS](https://nostalgic-css.github.io/NES.css/) and borrows elements heavily inspired by older Nintendo/Pok&eacute;mon games (namely from the older consoles), with some images based on actual characters. Per the warning on the site:
+
+> Nintendo owns the copyright of these characters. Please comply with the Nintendo guidelines and laws of the applicable jurisdiction.
+
+
+---
+
+Karl Alberto | CCC-2021
