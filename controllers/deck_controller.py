@@ -1,9 +1,11 @@
 from flask import Blueprint, request, url_for, render_template, redirect, abort
 from main import db
 from models.deck import Deck
+from models.card import Card
 from schemas.deck_schema import deck_schema, decks_schema, deck_update_schema
 from flask_login import login_required, current_user
 from marshmallow import ValidationError
+from sqlalchemy import func
 
 decks = Blueprint("deck", __name__)
 
@@ -17,8 +19,10 @@ def get_decks():
 @decks.route("/decks/<int:id>/", methods=["GET"])
 def get_deck(id):
     deck = Deck.query.get_or_404(id)
+    total_cards = Card.query.with_entities(func.sum(Card.quantity)).filter_by(deck_id=deck.id).scalar()
     data = {
-        "deck": deck_schema.dump(deck)
+        "deck": deck_schema.dump(deck),
+        "total_cards": total_cards
     }
 
     return render_template("deck.html", page_data=data)
