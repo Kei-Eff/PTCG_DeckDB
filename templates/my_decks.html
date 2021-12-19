@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>My Decks</h1>
-
+    <div class="nes-container {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
+    {% if page_data.decks | length > 0 %}
     <div class="nes-table-responsive">
-        <table class="nes-table is-bordered">
+        <table class="nes-table is-bordered {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
             <thead>
             <tr>
                 <th>Deck Name</th>
@@ -26,8 +27,11 @@
             </tbody>
         </table>
     </div>
-
+    {% else %}
+    <p>No decks available! Add decks by clicking the "Add New Deck" button.</p>
+    {% endif %}
     <div>
         <a class="nes-btn is-primary" href="/deck/">Add New Deck</a>
     </div>
+</div>
 {% endblock %}

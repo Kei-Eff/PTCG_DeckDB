@@ -2,11 +2,11 @@
 {% block content %}
 <h1>Update Deck</h1>
 
-<div class="nes-container is-rounded">
+<div class="nes-container is-rounded {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
     <form action="/deck/{{ page_data.deck['id'] }}/" method="POST">
         <div class="nes-field">
             <label for="name">Deck Name</label>
-            <input type="text" id="name" name="name" class="nes-input" value="{{ page_data.deck['name'] }}">
+            <input type="text" id="name" name="name" class="nes-input {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}" value="{{ page_data.deck['name'] }}">
         </div>
         <div class="nes-field">
             <button type="submit" class="nes-btn is-primary">Update</button>

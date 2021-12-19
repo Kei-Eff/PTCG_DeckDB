@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Cards in "{{ page_data.deck["name"] }}" Deck</h1>
-
+    <div class="nes-container {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
     {% if page_data.cards | length > 0 %}
     <div class="nes-table-responsive">
-        <table class="nes-table is-bordered">
+        <table class="nes-table is-bordered {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
             <thead>
             <tr>
                 <th>Name</th>
@@ -38,4 +38,5 @@
         <a class="nes-btn is-primary" href="/deck/{{ page_data.deck['id'] }}/card/">Add Card</a>
         <a class="nes-btn" href="/my-decks/">Back to My Decks</a>
     </div>
+</div>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% block content %}
     <h1>{{ page_data.deck["name"] }}</h1>
 
-    <div class="nes-container is-rounded">
+    <div class="nes-container is-rounded {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
         <div class="nes-field">
             <label>Created By</label>                
             <span class="nes-text">
@@ -17,10 +17,9 @@
             <label>Date Created</label>                
             <span class="nes-text">{{ page_data.deck["date_created"] }}</span>
         </div>
-    </div>
-    
+        {% if page_data.deck.cards | length > 0 %}
     <div class="nes-table-responsive">
-        <table class="nes-table is-bordered">
+        <table class="nes-table is-bordered {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -45,4 +44,10 @@
     <div style="margin-top: 15px;">
         <p>Total number of cards: {{ page_data.total_cards }}</p>
     </div>
+    </div>
+    
+    
+    {% else %}
+    <p>Deck is empty.</p>
+    {% endif %}
 {% endblock %}

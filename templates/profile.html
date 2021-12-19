@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Profile</h1>
 
-<div class="nes-container is-rounded with-title">
+<div class="nes-container is-rounded with-title {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
     <p class="title">Your Details</p>
     <form>
         <div class="nes-field">
@@ -17,17 +17,19 @@
 </div>
 
 <form action="/profile" method="POST">
-    <div class="nes-container is-rounded with-title">
+    <div class="nes-container is-rounded with-title {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
         <p class="title">Your Settings</p>
         <div>
             <label for="is_dark_mode">
-                <input type="checkbox" id="is_dark_mode" name="is_dark_mode" class="nes-checkbox" {% if page_data.settings["is_dark_mode"] %} checked {% endif %}/>
-                <span>Dark Mode (under construction)</span>
+                <input type="checkbox" id="is_dark_mode" name="is_dark_mode" class="nes-checkbox {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}" {{
+                     "checked" if page_data.settings["is_dark_mode"] }}/>
+                <span>Dark Mode</span>
             </label>
         </div>
         <div>
             <label for="is_anon_mode">
-                <input type="checkbox" id="is_anon_mode" name="is_anon_mode" class="nes-checkbox" {% if page_data.settings["is_anon_mode"] %} checked {% endif %} />
+                <input type="checkbox" id="is_anon_mode" name="is_anon_mode" class="nes-checkbox {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}" {{
+                    "checked" if page_data.settings["is_anon_mode"] }} />
                 <span>Anonymous Mode</span>
             </label>
         </div>

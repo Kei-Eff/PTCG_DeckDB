@@ -2,12 +2,12 @@
 {% block content %}
     <h1>Welcome, Trainers!</h1>
 
-    <section class="nes-container is-rounded" style="padding-bottom:80px;">
+    <section class="nes-container is-rounded {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}" style="padding-bottom:80px;">
         <section class="message-list">
             <section class="message -left">
               <i class="nes-ash" style="top:100px;"></i>
               <!-- Balloon -->
-              <div class="nes-balloon from-left">
+              <div class="nes-balloon from-left {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
                 <p>Pok&eacute;decks is a personal decklist manager for the Pok&eacute;mon Trading Card Game!</p>
                 <p>You can add your own decks, or view decks from other trainers!</p>
               </div>
@@ -15,7 +15,7 @@
         
             <section class="message -right">
               <!-- Balloon -->
-              <div class="nes-balloon from-right">
+              <div class="nes-balloon from-right {{ 'is-dark' if current_user.is_authenticated and current_user.user_settings.is_dark_mode }}">
                 <p>Bulba, bulba!</p>
               </div>
               <i class="nes-bulbasaur" style="top:40px;"></i>
