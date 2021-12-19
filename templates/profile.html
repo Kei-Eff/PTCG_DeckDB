@@ -21,13 +21,13 @@
         <p class="title">Your Settings</p>
         <div>
             <label for="is_dark_mode">
-                <input type="checkbox" id="is_dark_mode" name="is_dark_mode" class="nes-checkbox" unchecked />
+                <input type="checkbox" id="is_dark_mode" name="is_dark_mode" class="nes-checkbox" {% if page_data.settings["is_dark_mode"] %} checked {% endif %}/>
                 <span>Dark Mode</span>
             </label>
         </div>
         <div>
             <label for="is_anon_mode">
-                <input type="checkbox" id="is_anon_mode" name="is_anon_mode" class="nes-checkbox" unchecked />
+                <input type="checkbox" id="is_anon_mode" name="is_anon_mode" class="nes-checkbox" {% if page_data.settings["is_anon_mode"] %} checked {% endif %} />
                 <span>Anonymous Mode</span>
             </label>
         </div>

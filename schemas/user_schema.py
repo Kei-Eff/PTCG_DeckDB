@@ -23,6 +23,8 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
         only=("id", "name")
     )
 
+    user_settings = ma.Nested("UserSettingsSchema")
+
     def load_password(self, password):
         if len(password)>=8:
             return generate_password_hash(password, method="sha256")

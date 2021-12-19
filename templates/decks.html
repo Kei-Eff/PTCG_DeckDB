@@ -15,7 +15,13 @@
                 {% for deck in page_data.decks %}
                 <tr>
                     <td><a href="/decks/{{ deck.id }}">{{ deck.name }}</a></td>
-                    <td>{{ deck.user['username'] }}</td>
+                    <td>
+                        {% if deck.user.user_settings['is_anon_mode'] %}
+                            Anonymous
+                        {% else %}
+                            {{ deck.user['username'] }}
+                        {% endif %}
+                        </td>
                     <td>{{ deck.date_created }}</td>
                 </tr>
                 {% endfor %}

@@ -5,7 +5,13 @@
     <div class="nes-container is-rounded">
         <div class="nes-field">
             <label>Created By</label>                
-            <span class="nes-text">{{ page_data.deck["user"]["username"] }}</span>
+            <span class="nes-text">
+                {% if page_data.deck.user.user_settings['is_anon_mode'] %}
+                    Anonymous
+                {% else %}
+                    {{ page_data.deck.user["username"] }}
+                {% endif %}
+            </span>
         </div>
         <div class="nes-field">
             <label>Date Created</label>                
@@ -24,13 +30,14 @@
                 </tr>
             </thead>
             <tbody>
-                <!--
+                {% for card in page_data.deck.cards %}
                 <tr>
-                    <td>Umbreon V</td>
-                    <th>Evolving Skies</th>
-                    <td>Pok&eacute;mon</td>
-                    <td>3</td>
-                </tr> -->
+                    <td>{{ card.name }}</td>
+                    <th>{{ card.set }}</th>
+                    <td>{{ card.card_type.name }}</td>
+                    <td>{{ card.quantity }}</td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

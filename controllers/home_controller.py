@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, abort
 from main import db, lm
 from models.user import User
+from models.user_settings import UserSettings
 from schemas.user_schema import user_schema
 from flask_login import login_user, logout_user, login_required
 
@@ -25,6 +26,11 @@ def signup():
 
     new_user = user_schema.load(request.form)
     db.session.add(new_user)
+
+    new_user_settings = UserSettings()
+    new_user_settings.user = new_user
+    db.session.add(new_user_settings)
+
     db.session.commit()
     login_user(new_user)
     return redirect(url_for("home.homepage"))

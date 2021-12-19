@@ -13,7 +13,7 @@ class User(UserMixin, db.Model):
 
     user_settings = db.relationship("UserSettings", backref="user", lazy=False, uselist=False)
 
-    decks = db.relationship("Deck", backref="user", lazy="joined")
+    decks = db.relationship("Deck", backref="user", lazy=False)
 
     def __init__(self, username, password, email):
         self.username = username

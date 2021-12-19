@@ -7,7 +7,7 @@ class Deck(db.Model):
     name = db.Column(db.String(80), nullable=False)
     date_created = db.Column(db.DateTime(), server_default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey("User.id"), nullable=False)
-    cards = db.relationship("Card", backref="deck", lazy=True)
+    cards = db.relationship("Card", backref="deck", lazy="joined")
 
     def __init__(self, name):
         self.name = name

@@ -1,8 +1,11 @@
-from flask import Blueprint, request, render_template, jsonify
+from flask import Blueprint, request, render_template, jsonify, redirect, url_for
 from main import db
 from models.user import User
+from models.user_settings import UserSettings
+from schemas.user_settings_schema import user_settings_schema, user_settings_update_schema
 from schemas.user_schema import user_schema
 from flask_login import login_required, current_user
+from marshmallow import ValidationError
 
 
 users = Blueprint("user", __name__)
@@ -22,19 +25,22 @@ users = Blueprint("user", __name__)
 @users.route("/profile", methods=["GET", "POST"])
 @login_required
 def user_detail():
+    current_user_settings = UserSettings.query.filter_by(user_id = current_user.id)
+    data = {
+        "settings": current_user_settings.first()
+    }
     if request.method == "GET":
-        return render_template("profile.html")
-    
-    # user = User.query.filter_by(id = current_user.id)
-    # updated_fields = user.schema.dump(request.form)
-    # errors = user_update_schema.validate(updated_fields)
+        return render_template("profile.html", page_data=data)
 
-    # if errors:
-    #     raise ValidationError(message=errors)
+    updated_fields = user_settings_schema.dump(request.form)
+    errors = user_settings_update_schema.validate(updated_fields)
 
-    # user.update(updated_fields)
-    # db.session.commit()
-    return render_template("profile.html")
+    if errors:
+        raise ValidationError(message=errors)
+
+    current_user_settings.update(updated_fields)
+    db.session.commit()
+    return redirect(url_for("home.homepage"))
 
 @users.route("/users/<int:id>/", methods=["PUT", "PATCH"])
 def update_user(id):
